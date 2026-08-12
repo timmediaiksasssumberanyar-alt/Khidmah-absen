@@ -41,8 +41,7 @@
       </form>
     </section>
 
-
-    <!-- 2. DASHBOARD VIEW (Diberi class 'hidden' di awal agar tersembunyi) -->
+    <!-- 2. DASHBOARD VIEW -->
     <section id="viewDashboard" class="hidden space-y-5">
       <div class="bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl border border-slate-700 text-center space-y-4 shadow-2xl">
         <div class="w-20 h-20 mx-auto flex items-center justify-center">
@@ -67,7 +66,8 @@
   </main>
 
   <script>
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbyqryrO_dISgWh7DAIjlOVAeqR4EwrIMJzzWUVNM425Kr2vsvfIi_WFO_NhtKfOWTDKUw/exec";
+    // URL WEB APP APPS SCRIPT TERBARU
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzqFCW4lXp0MaXTUZlL0PQtVUR5RYdF5QB0_NiR6jpJzIsS1k59W93lUico8svgEGv5Tw/exec";
 
     async function handleLogin(e) {
       e.preventDefault();
@@ -93,7 +93,7 @@
         const result = await response.json();
 
         if (result.status === "success") {
-          // --- KODE PEMINDAH HALAMAN LOG IN KE DASHBOARD ---
+          // Berpindah dari Login ke Dashboard
           document.getElementById("viewLogin").classList.add("hidden");
           document.getElementById("viewDashboard").classList.remove("hidden");
           document.getElementById("welcomeUser").innerText = "Selamat Datang, " + user + "!";
@@ -101,7 +101,7 @@
           alert("Gagal: " + result.message);
         }
       } catch (err) {
-        alert("Terjadi kesalahan koneksi!");
+        alert("Terjadi kesalahan koneksi ke server!");
         console.error(err);
       } finally {
         btn.disabled = false;
@@ -110,7 +110,7 @@
     }
 
     function handleLogout() {
-      // Kembalikan ke tampilan Login
+      // Kembali ke tampilan Login
       document.getElementById("viewDashboard").classList.add("hidden");
       document.getElementById("viewLogin").classList.remove("hidden");
       document.getElementById("loginPass").value = "";
